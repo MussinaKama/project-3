@@ -11,7 +11,7 @@ const SignupPage = () => {
            password={data.password}
            username={data.username}
            handleInputChange={inputChange}
-           handleSignUp={handleSignup}
+           handleSignup={handleSignup}
            />
       )}  
     </UserConsumer>

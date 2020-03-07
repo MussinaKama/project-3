@@ -15,13 +15,6 @@ router.post("/login", passport.authenticate("local", {
 });
 
 router.post("/signup", function(req, res, next) {
-  db.User.findOne({username: req.body.username}, function(err, user) {
-    if (err) throw err;
-    if (user) {
-      console.log("user already exists")
-      return res.json("user already exists");
-    }
-    if (!user) {
       db.User.findOne({email: req.body.email}, function(err, useremail) {
         if (err) throw err;
         if (useremail) {
@@ -40,10 +33,9 @@ router.post("/signup", function(req, res, next) {
             res.redirect(307, "/api/users/login")
           });
         }
-      }) 
-    } 
-    })  
-})
+      })     
+    })
+
   
 
 
