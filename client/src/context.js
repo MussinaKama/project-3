@@ -11,8 +11,7 @@ class UserProvider extends Component {
         password: "",
         username: "",
         loggedIn: false,
-        user: null,
-        failureMessage: null
+        user: null
     }
 
     componentDidMount() {
@@ -42,7 +41,6 @@ class UserProvider extends Component {
                     console.log("log in successful");
                     window.location.href = '/profile';
                 } else {
-                    console.log("Something went wrong :(")
                     console.log(user);
                 }
             });
@@ -65,11 +63,7 @@ class UserProvider extends Component {
                     console.log("log in successful");
                     window.location.href = '/profile';
                 } else {
-                    console.log("something went wrong :(")
                     console.log(user.data);
-                    this.setState({
-                        failureMessage: user.data
-                    })
                 }
             });
         }

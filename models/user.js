@@ -18,6 +18,8 @@ username: {
   unique: false,
   required: true
 },
+
+trips : [],
 createdAt: {
   type: Date,
   default: Date.now()

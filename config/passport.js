@@ -2,13 +2,15 @@ const passport = require("passport");
 const LocalStrategy = require("passport-local").Strategy;
 const db = require("../models");
 
-passport.use(new LocalStrategy(
+passport.use(new LocalStrategy({
+    usernameField: "email"
+},
     function(email, password, done) {
         db.User.findOne({
             email: email
         }, function(err, user) {
             if (err) {
-                console.log("something went wrong\n",err);
+                console.log(err);
                 return done(err)
             }
             if (!user) {
@@ -24,7 +26,7 @@ passport.use(new LocalStrategy(
   ));
 
 passport.serializeUser(function(user, done) {
-    done(null, user.id);
+    done(null, user._id);
 });
 
 passport.deserializeUser(function(id, done) {

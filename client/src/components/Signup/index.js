@@ -1,13 +1,9 @@
-import React, { useEffect } from "react";
+import React, { Component } from "react";
 import { FormGroup, Label, Input, Button, Form } from "reactstrap";
 import { Link } from "react-router-dom";
 
-const Signup = (props) => {
-
-    useEffect(() => {
-      console.log(props)
-    }, [props])
-
+class Signup extends Component {
+  render() {
     return (
       <div>
         <h2>Signup</h2>
@@ -19,8 +15,8 @@ const Signup = (props) => {
               name="email"
               id="email"
               placeholder="example@email.com"
-              value={props.email}
-              onChange={props.handleInputChange}
+              value={this.props.email}
+              onChange={this.props.handleInputChange}
             />
           </FormGroup>
           <FormGroup>
@@ -30,8 +26,8 @@ const Signup = (props) => {
               name="password"
               id="password"
               placeholder="password"
-              value={props.password}
-              onChange={props.handleInputChange}
+              value={this.props.password}
+              onChange={this.props.handleInputChange}
             />
           </FormGroup>
           <FormGroup>
@@ -41,18 +37,20 @@ const Signup = (props) => {
               name="username"
               id="username"
               placeholder="username"
-              value={props.username}
-              onChange={props.handleInputChange}
+              value={this.props.username}
+              onChange={this.props.handleInputChange}
             />
           </FormGroup>
-          <Button onClick={props.handleSignup}>Signup</Button>
+          <Button onClick={this.props.handleSignup}>Signup</Button>
           <p>
             <Link to="/login">Already have an account? Log in here</Link>
           </p>
         </Form>
       </div>
-    );
+    )
+  }
 }
+
 
 
 export default Signup;
