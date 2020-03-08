@@ -1,16 +1,17 @@
 import React from "react";
-import {Navbar, NavLink} from "reactstrap";
+import {NavLink, Nav, Col} from "reactstrap";
 
 const TopNavbar = () => {
     return (
       <div>
-        <Navbar>
+        <Nav vertical>
+          <Col col-6>
                 <NavLink href="/">About</NavLink>
                 <NavLink href="/profile">Profile</NavLink>
                 <NavLink href="/login">Login</NavLink>
                 <NavLink href="/signup">Signup</NavLink>
-        </Navbar>
-
+          </Col>
+        </Nav>
       </div>
     
     )

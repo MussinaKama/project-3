@@ -1,27 +1,21 @@
 import React from "react";
-import { Col, Card, CardHeader, CardBody } from "reactstrap";
+import { Col, Card, CardHeader, CardBody, Button } from "reactstrap";
 
-const CityCard = ({
-  city,
-  country,
-  continent,
-  restaurant,
-  events,
-  activities,
-  image
-}) => {
+
+const CityCard = (props) => {
   return (
     <Col>
       <Card>
-        <CardHeader>{city}</CardHeader>
+        <CardHeader>{props.city}</CardHeader>
+        <Button onClick={() => props.removeCard(props.id)}>Delete</Button>
         <CardBody>
           <p>
-            {country}, {continent}
+            {props.country}, {props.continent}
           </p>
-          <p>{restaurant}</p>
-          <p>{events}</p>
-          <p>{activities}</p>
-          <img src={image} alt={city}/>
+          <p>{props.restaurant}</p>
+          <p>{props.events}</p>
+          <p>{props.activities}</p>
+          <img src={props.image} alt={props.city} style={{width: 200, height: 200}}/>
         </CardBody>
       </Card>
     </Col>

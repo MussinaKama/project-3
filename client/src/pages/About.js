@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import {AboutWrapper} from "../styles/index";
 
 class About extends Component {
   state = {
@@ -7,9 +8,10 @@ class About extends Component {
 
   render() {
     return (
-        <div>
-          <h1>About</h1>
-        </div>
+        <AboutWrapper>
+          <h1>Trip Planner</h1>
+          <img src={process.env.PUBLIC_URL + '/travel-background.png'} alt="travel"/> 
+        </AboutWrapper>
     );
   }
 }
