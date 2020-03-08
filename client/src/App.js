@@ -7,7 +7,7 @@ import SignupPage from "./pages/SignupPage";
 import NotFound from "./pages/NotFound";
 import TopNavbar from "./components/Navbar/index"
 import UserProvider from "./context";
-// import {AnimatePresence} from "framer-motion";
+import {AnimatePresence} from "framer-motion";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
     <Router>
       <div>
         <TopNavbar/>
-        {/* <AnimatePresence> */}
+        <AnimatePresence>
         <Switch>
         <Route exact path="/" component={About} />
               <Route exact path="/login" component={Login}  />
@@ -23,7 +23,7 @@ function App() {
               <Route exact path="/profile" component={Profile} />
               <Route component={NotFound} />
         </Switch>
-        {/* </AnimatePresence> */}
+        </AnimatePresence>
       </div>
     </Router>
     </UserProvider>
