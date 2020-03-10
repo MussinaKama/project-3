@@ -1,9 +1,14 @@
 import React from "react";
 import { UserConsumer } from '../context';
 import Signup from "../components/Signup/index"
+import { motion } from "framer-motion";
 
 const SignupPage = () => {
   return (
+    <motion.div 
+    exit={{ opacity: 0 }}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}>
     <UserConsumer>
       {({ data, inputChange, handleSignup }) => (
            <Signup
@@ -15,6 +20,7 @@ const SignupPage = () => {
            />
       )}  
     </UserConsumer>
+    </motion.div>
   );
 }
 

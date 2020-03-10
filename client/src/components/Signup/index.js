@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { FormGroup, Label, Input, Button, Form } from "reactstrap";
+import { FormGroup, Label, Input, Button, Form, Container } from "reactstrap";
 import { Link } from "react-router-dom";
 
 class Signup extends Component {
   render() {
     return (
       <div>
+        <Container>
         <h2>Signup</h2>
         <Form>
           <FormGroup>
@@ -46,6 +47,8 @@ class Signup extends Component {
             <Link to="/login">Already have an account? Log in here</Link>
           </p>
         </Form>
+        </Container>
+        <img src={process.env.PUBLIC_URL + '/bottom.png'} alt="travel"/>
       </div>
     )
   }

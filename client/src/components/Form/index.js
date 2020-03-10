@@ -4,6 +4,8 @@ import API from "../../utils/API";
 import countriesList from "../../data/countries.json";
 import continentsList from "../../data/continents.json";
 import CityCard from "../Card/index";
+import Datepicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css"
 
 const CityForm = () => {
   const [data, setData] = useState({
@@ -11,7 +13,7 @@ const CityForm = () => {
     countriesList
   });
 
-  const [isSubmitted, setIsSubmitted] = useState(false);
+  // const [isSubmitted, setIsSubmitted] = useState(false);
   const [userInput, setUserInput] = useState({
     id: Math.floor(Math.random() * 100),
     city: "",
@@ -23,13 +25,15 @@ const CityForm = () => {
     image: ""
   });
 
-  const [userCard, setUserCard] = useState([]);
+  const [userDate, setUserDate] = useState({
+    startDate: new Date()
+  })
+
   const [savedCard, setSavedCard] = useState([]);
 
-  useEffect(() => {
-    console.log(savedCard);
-  }, [savedCard]);
-
+  const handleDateChange = date => {
+    setUserDate({startDate: date})
+  }
   useEffect(() => {
     loadCityCards();
   }, []);
@@ -40,9 +44,8 @@ const CityForm = () => {
       .catch(err => console.log(err));
   };
 
-  const deleteCityCard = (id, cityid) => {
-    console.log(cityid,"is the id homie")
-    API.deleteCityCard(id, cityid)
+  const deleteCityCard = id => {
+    API.deleteCityCard(id)
       .then(res => loadCityCards())
       .catch(err => console.log(err));
   };
@@ -51,14 +54,15 @@ const CityForm = () => {
     const { name, value } = event.target;
     setUserInput({ ...userInput, [name]: value });
   };
-
+ 
   const handleFormSubmit = async event => {
     event.preventDefault();
-    await setIsSubmitted(true);
-    await setUserCard([...userCard, userInput]);
+    // await setIsSubmitted(true);
+    // await setUserCard([...userCard, userInput]);
     await API.saveCityCard({
       id: userInput.id,
       city: userInput.city,
+      date: userDate.startDate,
       continent: userInput.continent,
       country: userInput.activities,
       activities: userInput.activities,
@@ -79,6 +83,7 @@ const CityForm = () => {
                 key={user.id}
                 id={user.id}
                 city={user.city}
+                date={user.date}
                 country={user.country}
                 continent={user.continent}
                 restaurant={user.restaurant}
@@ -90,7 +95,7 @@ const CityForm = () => {
             ))}
           </Container>
         ) : (
-          <h1>no data</h1>
+          <h1>No data found in your account</h1>
         )}
       </Col>
       <Container>
@@ -105,8 +110,9 @@ const CityForm = () => {
                 name="city"
               />
             </FormGroup>
+            <Datepicker selected={userDate.startDate} onChange={handleDateChange}></Datepicker>
             <FormGroup>
-              <Label for="city">Continent</Label>
+              <Label for="continent">Continent</Label>
               <select onChange={handleInputChange} name="continent">
                 {data.continentsList.map(c => (
                   <option key={c.value}>{c.value}</option>
@@ -114,7 +120,7 @@ const CityForm = () => {
               </select>
             </FormGroup>
             <FormGroup>
-              <Label for="city">Country</Label>
+              <Label for="country">Country</Label>
               <select onChange={handleInputChange} name="country">
                 {data.countriesList.map(country => (
                   <option key={country.name}>{country.name}</option>
@@ -159,7 +165,7 @@ const CityForm = () => {
             </FormGroup>
             <Button onClick={handleFormSubmit}>Submit</Button>
           </form>
-          {isSubmitted &&
+          {/* {isSubmitted &&
             userCard.map(user => (
               <CityCard
                 key={user.id}
@@ -173,7 +179,7 @@ const CityForm = () => {
                 image={user.image}
                 removeCard={deleteCityCard}
               />
-            ))}
+            ))} */}
         </Col>
       </Container>
     </>

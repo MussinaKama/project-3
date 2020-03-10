@@ -1,20 +1,17 @@
 import React from "react";
-import {NavLink, Nav, Col} from "reactstrap";
+import { NavLink, Nav, Container, Row } from "reactstrap";
+import {NavWrapper} from "../../styles";
 
 const TopNavbar = () => {
-    return (
-      <div>
-        <Nav vertical>
-          <Col col-6>
-                <NavLink href="/">About</NavLink>
-                <NavLink href="/profile">Profile</NavLink>
-                <NavLink href="/login">Login</NavLink>
-                <NavLink href="/signup">Signup</NavLink>
-          </Col>
-        </Nav>
-      </div>
+  return (
+        <NavWrapper className="flex-column">
+          <NavLink className="links" href="/">About</NavLink>
+          <NavLink className="links" href="/profile">Profile</NavLink>
+          <NavLink className="links" href="/login">Login</NavLink>
+          <NavLink className="links" href="/signup">Signup</NavLink>
+        </NavWrapper>
     
-    )
-}
+  );
+};
 
 export default TopNavbar;
