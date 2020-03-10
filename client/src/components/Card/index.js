@@ -4,7 +4,7 @@ import { Col, Card, CardHeader, CardBody} from "reactstrap";
 
 const CityCard = (props) => {
   return (
-    <Col>
+    <Col style={{ width: '18rem', display: "inline-block", border:"dark", borderRadius:"10px", fontFamily:"Tahoma, Geneva, sans-serif"}}>
       <Card>
       <CardHeader>{props.city},   {props.date}</CardHeader>
         <CardBody>
