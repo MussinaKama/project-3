@@ -13,7 +13,6 @@ const CityForm = () => {
     countriesList
   });
 
-  // const [isSubmitted, setIsSubmitted] = useState(false);
   const [userInput, setUserInput] = useState({
     id: Math.floor(Math.random() * 100),
     city: "",
@@ -30,6 +29,10 @@ const CityForm = () => {
   })
 
   const [savedCard, setSavedCard] = useState([]);
+
+  useEffect(() => {
+    console.log(savedCard)
+  }, [savedCard])
 
   const handleDateChange = date => {
     setUserDate({startDate: date})
@@ -57,8 +60,6 @@ const CityForm = () => {
  
   const handleFormSubmit = async event => {
     event.preventDefault();
-    // await setIsSubmitted(true);
-    // await setUserCard([...userCard, userInput]);
     await API.saveCityCard({
       id: userInput.id,
       city: userInput.city,
@@ -165,22 +166,7 @@ const CityForm = () => {
             </FormGroup>
             <Button onClick={handleFormSubmit}>Submit</Button>
           </form>
-          {/* {isSubmitted &&
-            userCard.map(user => (
-              <CityCard
-                key={user.id}
-                id={user.id}
-                city={user.city}
-                country={user.country}
-                continent={user.continent}
-                restaurant={user.restaurant}
-                activities={user.activities}
-                events={user.events}
-                image={user.image}
-                removeCard={deleteCityCard}
-              />
-            ))} */}
-        </Col>
+          </Col>
       </Container>
     </>
   );
