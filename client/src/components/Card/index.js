@@ -1,13 +1,12 @@
 import React from "react";
-import { Col, Card, CardHeader, CardBody, Button } from "reactstrap";
+import { Col, Card, CardHeader, CardBody} from "reactstrap";
 
 
 const CityCard = (props) => {
   return (
     <Col>
       <Card>
-        <CardHeader>{props.city}</CardHeader>
-        <Button onClick={() => props.removeCard(props.id)}>Delete</Button>
+      <CardHeader>{props.city},   {props.date}</CardHeader>
         <CardBody>
           <p>
             {props.country}, {props.continent}
