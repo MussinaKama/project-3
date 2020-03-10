@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, FormGroup, Label, Button, Input, Col } from "reactstrap";
+import { Container, FormGroup, Form, Label, Button, Input, Col } from "reactstrap";
 import API from "../../utils/API";
 import countriesList from "../../data/countries.json";
 import continentsList from "../../data/continents.json";
@@ -100,8 +100,8 @@ const CityForm = () => {
         )}
       </Col>
       <Container>
-        <Col>
-          <form>
+      <Col  className="d-flex justify-content-center" style={{display:"block"}}>
+          <Form style={{background:"white", borderRadius:"10px"}}>
             <FormGroup>
               <Label for="city">City</Label>
               <Input
@@ -165,7 +165,7 @@ const CityForm = () => {
               />
             </FormGroup>
             <Button onClick={handleFormSubmit}>Submit</Button>
-          </form>
+          </Form>
           </Col>
       </Container>
     </>

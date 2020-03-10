@@ -13,7 +13,7 @@ const CityCard = (props) => {
       stiffness: 260,
       damping: 20
     }}>
-    <Col>
+    <Col style={{ width: '18rem', display: "inline-block", border:"dark", borderRadius:"10px", fontFamily:"Tahoma, Geneva, sans-serif"}}>
       <Card>
       <CardHeader>{props.city}, {props.date}<Button onClick={() => props.removeCard(props.id)}></Button></CardHeader>
         <CardBody>
