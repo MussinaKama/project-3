@@ -59,6 +59,7 @@ router.post("/savedtrips", function(req, res) {
         { new: true }
       )
       .then(function(response) {
+        console.log(response + "this lives in post")
         res.json(response);
       })
       .catch(function(err) {
@@ -71,6 +72,7 @@ router.get("/savedtrips", function(req, res) {
   if (req.user) {
       db.User.find({_id: req.user._id})
       .then(function(response) {
+        console.log(response)
         res.json(response[0].trips);
       })
       .catch(function(err) {
@@ -79,28 +81,27 @@ router.get("/savedtrips", function(req, res) {
   }
 });
 
-// router.put("/savedtrips/:id/:cityid", function(req, res) {
-//   if (req.user) {
-//    // console.log("this is user object" + req.user)
-//       db.User.findByIdAndUpdate({_id: req.user._id}, {$pull: {trips: {cityid: req.params.cityid}}})
-//       .then(function(response) {
-//         console.log(req.params.cityid)
-//        // response.trips.filter(trip => trip.cityid !== cityid)
-//         // console.log(response[0].trips.cityid)
-//         // for (var i=0;i<response.trips.length;i++){
-//         //   if(response.trips[i].cityid ==req.params.cityid){
-//         //     console.log(response.trips[i])
-//         //     response.trips.splice(i,1)
-//         //   }
-//         // }
-//         console.log(response,'is result')
-//         res.json(response);
-//       })
-//       .catch(function(err) {
-//         console.log(err);
-//       });
-//   }
-// });
+router.put("/savedtrips/:id/", function(req, res) {
+  if (req.user) {
+   console.log("this is user object" + req.user)
+      db.User.findByIdAndUpdate({_id: req.user._id}, {$pull: {trips: {id: req.params.id}}})
+      .then(function(response) {
+        console.log(response)
+       // response.trips.filter(trip => trip.cityid !== cityid)
+        // console.log(response[0].trips.cityid)
+        // for (var i=0;i<response.trips.length;i++){
+        //   if(response.trips[i].cityid ==req.params.cityid){
+        //     console.log(response.trips[i])
+        //     response.trips.splice(i,1)
+        //   }
+        // }
+        res.json(response);
+      })
+      .catch(function(err) {
+        console.log(err);
+      });
+  }
+});
 
 router.get("/logout", authMiddleware.logoutUser, function(req, res, next) {
   res.json("User logged out successfully");

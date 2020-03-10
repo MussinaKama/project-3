@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { UserConsumer } from "../context";
 import { Form, FormGroup, Label, Input, Button, Container } from "reactstrap";
 import { motion } from "framer-motion";
-import {DivWrapper} from "../styles";
+import {DivWrapper, LoginWrapper} from "../styles";
 
 const Login = () => {
   return (
@@ -16,37 +16,46 @@ const Login = () => {
         {({ data, inputChange, handleLogin }) => (
           <Container>
           <DivWrapper>
-            <h2>Login</h2>
+            <LoginWrapper>
+              <div className="wrap-login">
             <Form>
-              <FormGroup>
-                <Label for="email">Email</Label>
-                <Input
+            <Label className="login-form-title">Login</Label>
+              <div className="wrap-input">
+                <Input className="input"
                   type="text"
                   name="email"
                   id="email"
-                  placeholder="example@email.com"
+                  placeholder="Enter email"
                   value={data.email}
                   onChange={inputChange}
                 />
-              </FormGroup>
-              <FormGroup>
-                <Label for="password">Password</Label>
-                <Input
+              </div>
+              <div className="wrap-input">
+                <Input className="input"
                   type="password"
                   name="password"
                   id="password"
-                  placeholder="password"
+                  placeholder="Enter password"
                   value={data.password}
                   onChange={inputChange}
                 />
-              </FormGroup>
-              <Button onClick={handleLogin}>Login</Button>
+              </div>
+              <div className="container-login-form-btn">
+              <div className="wrap-login-form-btn">
+              <div className="login-form-bgbtn"></div>
+              <Button className="login-form-btn" onClick={handleLogin}>Login</Button>
+              </div>
+              </div>
+              <div className="text">
               <p className="signupLink">
                 <Link to="/signup">Don't have an account? Sign up here</Link>
               </p>
+              </div>
             </Form>
-            <img src={process.env.PUBLIC_URL + '/bottom.png'} alt="travel"/>
+              </div>
+            </LoginWrapper>
           </DivWrapper>
+            <img src={process.env.PUBLIC_URL + '/bottom.png'} alt="travel"/>
           </Container>
         )}
       </UserConsumer>
