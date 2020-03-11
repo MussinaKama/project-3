@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { FormGroup, Label, Input, Button, Form, Container } from "reactstrap";
+import { Label, Input, Button, Form, Container } from "reactstrap";
 import { Link } from "react-router-dom";
 import { LoginWrapper } from "../../styles";
 
@@ -56,8 +56,8 @@ class Signup extends Component {
               </Form>
             </div>
           </LoginWrapper>
-        </Container>
-        <img src={process.env.PUBLIC_URL + "/bottom.png"} alt="travel" />
+        </Container> 
+       <img src={process.env.PUBLIC_URL + "/cropped.png"} alt="travel" style={{marginLeft: 0.1, width: "50%" }} />
       </div>
     );
   }

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 
 const CityCard = (props) => {
   return (
+    <Col style={{ width: '18rem', display: "inline-block", border:"dark", borderRadius:"10px", fontFamily:"Tahoma, Geneva, sans-serif"}}>
     <motion.div
     initial={{ scale: 0 }}
     animate={{ rotate: 360, scale: 1 }}
@@ -13,10 +14,9 @@ const CityCard = (props) => {
       stiffness: 260,
       damping: 20
     }}>
-    <Col style={{ width: '18rem', display: "inline-block", border:"dark", borderRadius:"10px", fontFamily:"Tahoma, Geneva, sans-serif"}}>
       <Card>
-      <CardHeader>{props.city}, {props.date}<Button onClick={() => props.removeCard(props.id)}></Button></CardHeader>
-        <CardBody>
+      <CardHeader style={{background: "orange", textAlign: "center", fontWeight: "bold"}}>{props.city}, {props.date}</CardHeader>
+        <CardBody style={{textAlign: "center"}}>
           <p>
             {props.country}, {props.continent}
           </p>
@@ -26,8 +26,8 @@ const CityCard = (props) => {
           <img src={props.image} alt={props.city} style={{width: 200, height: 200}}/>
         </CardBody>
       </Card>
-    </Col>
     </motion.div>
+    </Col>
   );
 };
 

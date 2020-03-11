@@ -1,11 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Container, FormGroup, Form, Label, Button, Input, Col } from "reactstrap";
+import {
+  Container,
+  FormGroup,
+  Form,
+  Label,
+  Button,
+  Input,
+  Col
+} from "reactstrap";
 import API from "../../utils/API";
 import countriesList from "../../data/countries.json";
 import continentsList from "../../data/continents.json";
 import CityCard from "../Card/index";
 import Datepicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css"
+import "react-datepicker/dist/react-datepicker.css";
+import { FormWrapper } from "../../styles";
+import moment from "moment";
 
 const CityForm = () => {
   const [data, setData] = useState({
@@ -26,21 +36,40 @@ const CityForm = () => {
 
   const [userDate, setUserDate] = useState({
     startDate: new Date()
-  })
+  });
 
   const [savedCard, setSavedCard] = useState([]);
 
   useEffect(() => {
-    console.log(savedCard)
-  }, [savedCard])
+    console.log(savedCard);
+  }, [savedCard]);
 
-  const handleDateChange = date => {
-    setUserDate({startDate: date})
-  }
   useEffect(() => {
     loadCityCards();
   }, []);
 
+  const handleDateChange = date => {
+    setUserDate({ startDate: date});
+  };
+
+  const handleSearch = e => {
+    const value = e.target.value;
+    const filteredCountries = continentsList.filter(c => {
+      let newValue = Object.values(c)
+      .join("")
+      .toLowerCase()
+      return newValue.indexOf(value.toLowerCase()) !== -1;
+    })
+
+    setData({countriesList: filteredCountries})
+  }
+
+  const formatDate = (date) => {
+    let fDate = new Date(date)
+    let sDate = fDate.getFullYear() + '-'+(fDate.getMonth() + 1) +'-'+fDate.getDate()
+    return sDate;
+
+  }
   const loadCityCards = () => {
     API.getCityCards()
       .then(res => setSavedCard(res.data))
@@ -57,10 +86,10 @@ const CityForm = () => {
     const { name, value } = event.target;
     setUserInput({ ...userInput, [name]: value });
   };
- 
-  const handleFormSubmit = async event => {
+
+  const handleFormSubmit = event => {
     event.preventDefault();
-    await API.saveCityCard({
+    API.saveCityCard({
       id: userInput.id,
       city: userInput.city,
       date: userDate.startDate,
@@ -70,8 +99,9 @@ const CityForm = () => {
       restaurant: userInput.restaurant,
       events: userInput.events,
       image: userInput.image
-    });
-    await loadCityCards();
+    })
+      .then(res => loadCityCards())
+      .catch(err => console.log(err)); 
   };
 
   return (
@@ -84,7 +114,7 @@ const CityForm = () => {
                 key={user.id}
                 id={user.id}
                 city={user.city}
-                date={user.date}
+                date={formatDate(user.date)}
                 country={user.country}
                 continent={user.continent}
                 restaurant={user.restaurant}
@@ -100,73 +130,85 @@ const CityForm = () => {
         )}
       </Col>
       <Container>
-      <Col  className="d-flex justify-content-center" style={{display:"block"}}>
-          <Form style={{background:"white", borderRadius:"10px"}}>
-            <FormGroup>
-              <Label for="city">City</Label>
-              <Input
-                type="text"
-                id="city"
-                onChange={handleInputChange}
-                name="city"
-              />
-            </FormGroup>
-            <Datepicker selected={userDate.startDate} onChange={handleDateChange}></Datepicker>
-            <FormGroup>
-              <Label for="continent">Continent</Label>
-              <select onChange={handleInputChange} name="continent">
-                {data.continentsList.map(c => (
-                  <option key={c.value}>{c.value}</option>
-                ))}
-              </select>
-            </FormGroup>
-            <FormGroup>
-              <Label for="country">Country</Label>
-              <select onChange={handleInputChange} name="country">
-                {data.countriesList.map(country => (
-                  <option key={country.name}>{country.name}</option>
-                ))}
-              </select>
-            </FormGroup>
-            <FormGroup>
-              <Label for="restaurant">Restaurants</Label>
-              <Input
-                type="text"
-                id="restaurant"
-                onChange={handleInputChange}
-                name="restaurant"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="activity">Activities</Label>
-              <Input
-                type="text"
-                id="activity"
-                onChange={handleInputChange}
-                name="activities"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="event">Events</Label>
-              <Input
-                type="text"
-                id="event"
-                onChange={handleInputChange}
-                name="events"
-              />
-            </FormGroup>
-            <FormGroup>
-              <Label for="image">Image</Label>
-              <Input
-                type="text"
-                id="image"
-                onChange={handleInputChange}
-                name="image"
-              />
-            </FormGroup>
-            <Button onClick={handleFormSubmit}>Submit</Button>
-          </Form>
-          </Col>
+        <Col
+          className="d-flex justify-content-center"
+          style={{ display: "block" }}
+        >
+          <FormWrapper>
+            <Form className="form">
+              <FormGroup>
+                <Label for="city">What city you want to visit next?</Label>
+                <Input
+                  type="text"
+                  id="city"
+                  onChange={handleInputChange}
+                  name="city"
+                />
+              </FormGroup>
+              <Datepicker
+                selected={userDate.startDate}
+                onChange={handleDateChange}
+                id="date"
+              ></Datepicker>
+              <FormGroup>
+                <Label for="continent">Choose continent</Label>
+                <select onChange={handleInputChange} name="continent" id="continent">
+                  {data.continentsList.map(c => (
+                    <option key={c.value}>{c.value}</option>
+                  ))}
+                </select>
+              </FormGroup>
+              <FormGroup>
+                <Label for="country">Choose country</Label>
+                <select onChange={handleInputChange}  onSearch={handleSearch} name="country" id="country">
+                  {data.countriesList.map(country => (
+                    <option key={country.name}>{country.name}</option>
+                  ))}
+                </select>
+              </FormGroup>
+              <FormGroup>
+                <Label for="restaurant">Restaurants</Label>
+                <Input
+                  type="text"
+                  id="restaurant"
+                  onChange={handleInputChange}
+                  name="restaurant"
+                  placeholder="Insert using comma"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="activity">Activities</Label>
+                <Input
+                  type="text"
+                  id="activity"
+                  onChange={handleInputChange}
+                  name="activities"
+                  placeholder="Insert using comma"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="event">Events</Label>
+                <Input
+                  type="text"
+                  id="event"
+                  onChange={handleInputChange}
+                  name="events"
+                  placeholder="Insert using comma"
+                />
+              </FormGroup>
+              <FormGroup>
+                <Label for="image">Insert URL of image associated with this city/country</Label>
+                <Input
+                  type="text"
+                  id="image"
+                  onChange={handleInputChange}
+                  name="image"
+                />
+              </FormGroup>
+              <Button onClick={handleFormSubmit}>Submit</Button>
+            </Form>
+          </FormWrapper>
+        </Col>
       </Container>
     </>
   );

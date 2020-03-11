@@ -14,8 +14,8 @@ const Login = () => {
     >
       <UserConsumer>
         {({ data, inputChange, handleLogin }) => (
+          <div>
           <Container>
-          <DivWrapper>
             <LoginWrapper>
               <div className="wrap-login">
             <Form>
@@ -54,9 +54,9 @@ const Login = () => {
             </Form>
               </div>
             </LoginWrapper>
-          </DivWrapper>
-            <img src={process.env.PUBLIC_URL + '/bottom.png'} alt="travel"/>
           </Container>
+          <img src={process.env.PUBLIC_URL + '/cropped.png'} alt="travel" style={{marginLeft: 0.1, width: "50%" }}/>
+          </div>        
         )}
       </UserConsumer>
     </motion.div>
