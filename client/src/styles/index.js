@@ -3,26 +3,34 @@ import {Container} from "reactstrap";
 
 export const AboutWrapper = styled.div`
  
- margin-top: 50px;
+ margin-top: 40px;
  h1 {
      text-align: center;
+     font-family: 'Baloo Tammudu', cursive;
+     font-weight: bold;
+     font-size: 60px;
+     color: orange;
  }
  img {
     display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 30%;
+  width: 35%;
    }
 
-   h5{
+   p {
       text-align: justify;
-      
+      font-family: 'Mina', sans-serif;
       padding-left: 120px;
       padding-right: 120px;
-     }
-     h6 {
      text-align: center;
+     font-size: 18px;
+     font-weight: bold;
      }
+  p a {
+    color: black;
+    text-decoration: underline;
+  }
 
 `
 
@@ -40,12 +48,9 @@ export const ContainerWrapper = styled(Container)`
    height: 100%;
 `
 
-export const DivWrapper = styled.div`
-  img {
-   margin-bottom: 0;
-}
-`
 export const LoginWrapper = styled.article`
+margin-left: 300px;
+margin-top: 20px;
 .wrap-login {
    width: 400px;
    background: #fff;
@@ -60,7 +65,7 @@ export const LoginWrapper = styled.article`
 
  .login-form-title {
    display: block;
-   font-family: Poppins-Bold;
+   font-family: 'Baloo Tammudu', cursive;
    font-size: 39px;
    color: #333333;
    line-height: 1.2;
@@ -74,7 +79,7 @@ export const LoginWrapper = styled.article`
  }
 
  .label-input {
-   font-family: Poppins-Regular;
+   font-family: 'Mina', sans-serif;
    font-size: 14px;
    color: #333333;
    line-height: 1.5;
@@ -82,7 +87,7 @@ export const LoginWrapper = styled.article`
  }
 
  .input {
-   font-family: Poppins-Medium;
+   font-family: 'Mina', sans-serif;
    font-size: 16px;
    color: #333333;
    line-height: 1.2;
@@ -113,11 +118,7 @@ export const LoginWrapper = styled.article`
   border-radius: 25px;
   overflow: hidden;
   margin: 0 auto;
-  box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
-  -moz-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
-  -webkit-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
-  -o-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
-  -ms-box-shadow: 0 5px 30px 0px rgba(3, 216, 222, 0.2);
+
 }
  .login-form-bgbtn {
    position: absolute;
@@ -125,22 +126,12 @@ export const LoginWrapper = styled.article`
    width: 300%;
    height: 100%;
    background: #a64bf4;
-   background: -webkit-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-   background: -o-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-   background: -moz-linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
-   background: linear-gradient(right, #00dbde, #fc00ff, #00dbde, #fc00ff);
    top: 0;
    left: -100%;
-   -webkit-transition: all 0.4s;
-   -o-transition: all 0.4s;
-   -moz-transition: all 0.4s;
-   transition: all 0.4s;
  }
  
-
-
  .login-form-btn {
-   font-family: Poppins-Medium;
+   font-family: 'Mina', sans-serif;
    font-size: 16px;
    color: #fff;
    line-height: 1.2;
@@ -158,10 +149,29 @@ export const LoginWrapper = styled.article`
  }
 
  .text {
-  font-family: Poppins-Medium;
+  font-family: 'Mina', sans-serif;
   margin-top: 10px;
   text-align: center;
  }
+`
+export const FormWrapper = styled.article`
+font-family: 'Mina', sans-serif;
+.form {
+  background: white; 
+  border-radius: 10px; 
+  padding: 20px;
+`
+export const ProfileWrapper = styled.article`
+font-family: 'Mina', sans-serif;
+.logout {
+  float: right;
+}
+#continent {
+  margin-top: 10px;
+}
 
-
+#continent, #country, #date {
+  border-radius: 5px;
+  margin-left: 7px;
+}
 `

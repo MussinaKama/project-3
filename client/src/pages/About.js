@@ -16,28 +16,24 @@ class About extends Component {
       >
         <AboutWrapper>
           <h1>Trip Planner</h1>
-          <h5>
-            Welcome to Trip Planner where planning has never been so easy. Trip
-            Planner comes with multiple tools to help you have a fantastic
-            experience when traveling around the world. Inside our application
-            you will have access to add restaurants, festivals, what to bring,
-            events, photos, ideas and data to your next upcoming trip.
-          </h5>
-          <h5>
+          <p>
+            Welcome to Trip Planner! Trip Planner comes with multiple tools to
+            help you have a fantastic experience when traveling around the
+            world. Inside our application you will have access to add
+            restaurants, festivals, what to bring, events, photos, ideas to your
+            next upcoming trip.
+          </p>
+          <p>
             All the information that is gathered and saved over time you will
-            create an itinerary that will be ready for your next big trip. We
-            make the time it takes planning your trip convienent, which gives
-            you more time to focus on what's really important when traveling
-            which is “Having Fun”!!!
-          </h5>
+            create an itinerary that will be ready for your next big trip.
+          </p>
           <img
             src={process.env.PUBLIC_URL + "/travel-background.png"}
             alt="travel"
           />
-          <h6>
-            Sign up for Trip Planner now, you are only wasting time.
-            <a href="/signup"> Sign-Up here.</a>
-          </h6>
+          <p>
+            Click <a href="/signup"> Sign-Up</a> to start using App.
+          </p>
         </AboutWrapper>
       </motion.div>
     );

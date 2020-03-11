@@ -4,6 +4,8 @@ import { Button } from "reactstrap";
 import { Link} from "react-router-dom"
 import CityForm from "../components/Form/index";
 import { motion } from "framer-motion";
+import {ProfileWrapper} from "../styles";
+import {Container} from "reactstrap";
 
 
 const Profile = () => {
@@ -14,11 +16,12 @@ const Profile = () => {
         animate={{ opacity: 1 }}>
         <UserConsumer>
         {({ data, logout }) => (
-        <div>
+        <Container style={{marginTop: 20, marginLeft: 50}}>
+        <ProfileWrapper>
             {(data.loggedIn)? (
                 <div>
+                    <Button className="logout" onClick={logout}>Logout</Button>
                     <CityForm/>
-                    <Button onClick={logout}>Logout</Button>
                 </div>
             ): (
                 <div>
@@ -27,7 +30,8 @@ const Profile = () => {
                     
                 </div>
             )}
-        </div>
+        </ProfileWrapper>
+        </Container>
       )}
       </UserConsumer>
         </motion.div>
