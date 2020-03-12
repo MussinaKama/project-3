@@ -11,13 +11,14 @@ import { AnimatePresence } from "framer-motion";
 import {Row, Col} from "reactstrap";
 import {ContainerWrapper} from "./styles";
 
+
 function App() {
   return (
     <UserProvider>
       <Router>
         <ContainerWrapper fluid>
           <Row>
-            <Col md={2} style={{background: "orange"}}>
+            <Col md={2} style={{background: "orange", height:"753px"}}>
         <TopNavbar/>   
             </Col>
             <Col md={10}>
