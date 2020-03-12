@@ -20,8 +20,8 @@ const Profile = () => {
         <ProfileWrapper>
             {(data.loggedIn)? (
                 <div>
-                    <Button className="logout" onClick={logout}>Logout</Button>
                     <CityForm/>
+                    <Button className="logout" onClick={logout}>Logout</Button>
                 </div>
             ): (
                 <div>
