@@ -18,7 +18,7 @@ function App() {
       <Router>
         <ContainerWrapper fluid>
           <Row>
-            <Col md={2} style={{background: "orange", height:"753px"}}>
+            <Col md={2} style={{background: "rgb(255, 196, 0)", height: 1200}}>
         <TopNavbar/>   
             </Col>
             <Col md={10}>
