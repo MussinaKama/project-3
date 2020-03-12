@@ -1,9 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { UserConsumer } from "../context";
-import { Form, FormGroup, Label, Input, Button, Container } from "reactstrap";
+import { Form, Label, Input, Button, Container } from "reactstrap";
 import { motion } from "framer-motion";
-import {DivWrapper, LoginWrapper} from "../styles";
+import {LoginWrapper} from "../styles";
 
 const Login = () => {
   return (

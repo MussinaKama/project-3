@@ -15,7 +15,7 @@ const CityCard = (props) => {
       damping: 20
     }}>
       <Card>
-      <CardHeader style={{background: "orange", textAlign: "center", fontWeight: "bold"}}>{props.city}, {props.date}</CardHeader>
+      <CardHeader style={{background: "orange", textAlign: "center", fontWeight: "bold"}}>{props.city}, {props.date}<Button onClick={() => props.removeCard(props.id)}></Button></CardHeader>
         <CardBody style={{textAlign: "center"}}>
           <p>
             {props.country}, {props.continent}

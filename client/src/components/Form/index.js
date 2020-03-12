@@ -15,7 +15,6 @@ import CityCard from "../Card/index";
 import Datepicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { FormWrapper } from "../../styles";
-import moment from "moment";
 
 const CityForm = () => {
   const [data, setData] = useState({
@@ -66,7 +65,7 @@ const CityForm = () => {
 
   const formatDate = (date) => {
     let fDate = new Date(date)
-    let sDate = fDate.getFullYear() + '-'+(fDate.getMonth() + 1) +'-'+fDate.getDate()
+    let sDate = fDate.getFullYear() + '/'+(fDate.getMonth() + 1) +'/'+fDate.getDate()
     return sDate;
 
   }

@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink, Nav, Container, Row } from "reactstrap";
+import { NavLink} from "reactstrap";
 import {NavWrapper} from "../../styles";
 
 const TopNavbar = () => {
@@ -9,8 +9,7 @@ const TopNavbar = () => {
           <NavLink className="links" href="/profile">Profile</NavLink>
           <NavLink className="links" href="/login">Login</NavLink>
           <NavLink className="links" href="/signup">Signup</NavLink>
-        </NavWrapper>
-    
+        </NavWrapper> 
   );
 };
 
