@@ -15,9 +15,9 @@ class About extends Component {
         animate={{ opacity: 1 }}
       >
         <AboutWrapper>
-          <h1>Trip Planner</h1>
+          <h1>Boongalo</h1>
           <p>
-            Welcome to Trip Planner! Trip Planner comes with multiple tools to
+            Welcome to Boongalo! Boongalo comes with multiple tools to
             help you have a fantastic experience when traveling around the
             world. Inside our application you will have access to add
             restaurants, festivals, what to bring, events, photos, ideas to your
